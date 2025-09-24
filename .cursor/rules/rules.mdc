@@ -1,0 +1,51 @@
+---
+alwaysApply: false
+---
+
+Ik ben van plan om de ALLEREERSTE operating system te bouwen voor het onderwijs. Dit is eigenlijk wat het inhoudt: 
+
+Ik wil een software applicatie ontwikkelen voor zowel windows, macOS en Linux.
+We gaan een marketplace ontwikkelen waar we "Apps" aanbieden. 
+Bij de apps kun je de volgende zaken voorstellen: 
+
+Apps waar: 
+
+- Schoolboeken te kopen zijn voor onderwijsinstellingen
+- Schoolboeken te kopen zijn voor individuen, zoals voor homeschooling
+-  StudieLoopbaan begeleider (Speech2Speech)
+- AI powered tutoring gegeven kan worden
+
+En nog veel meer. De apps kunnen door ons intern ontwikkeld zijn (Native Apps) of Apps die speciaal gemaakt zijn voor bepaalde onderwijs instellingen (private apps) of third party apps waar developers zelf hun eigen apps op onze platform zetten. Zoals Tesla bijvoorbeeld die een app ontwikkelt om scholieren of studenten bepaalde skills te leren om straks bij tesla te werken etcetera. Of een software developer die extra wilt bijverdienen en daarvoor een mooie educatieve app ontwikkelt zoals leren over health.
+
+De apps moeten dan gekocht worden of als ze gratis zijn hoeft dat niet. Die apps kunnen dan gedownload worden, beetje net als hoe je apps download op steam. 
+
+Wij bieden dus de marketplace aan, maar ook de enivronment waarin je deze apps kunt zien (soort dashboard van Mijn Apps). En ook een enviroment waar je elke individuele app kunt openen. Ik heb een foto van een odoo dashboard toegevoegd om te laten zien hoe de mijn apps dashboard eruit gaat zien. Ik ben van plan om de software applicatie in zowel nederlands als engels te krijgen. Gewoon door taal te selecteren verandert de taal van de app.  
+
+Ik weet hoe nextjs werkt en ik gebruik het liefst typescript. Maar ik heb alleen webapps gebouwd. Nooit een software applicatie zelf. Ik wil straks dat je me begeleid hierin maar ik wil niet dat je code schrijft zonder mijn toestemming. Ik wil alleen dat je meedenkt en adviseert en alleen code schrijft als ik je dat expliciet vraag. 
+
+Ik ga werken aan een demo waar ik 1 week voor de tijd heb om het te bouwen met cursor. Ik heb nooit een software applicatie gebouwd dus ik ben wel een noob in dat opzicht. Ik gebruik linux ubuntu 22 om het te bouwen.  In de demo ga ik een emotionele begeleider app bouwen en een studieloopbaan begeleider app voor middelbare school. Ik heb deze apps al gebouwd in een ander project genaamd scooly-ai dat ik ook als zip heb toegevoegd dus in principe kunnen we het meeste straks gewoon kopieeeren en plakken om beetje aanpassen om het werkend te krijgen. 
+
+De demo is echt een demo dus login en authenticatie etcetera hoeft nog niet. De apps in de marketplace zijn ook echt allemaal gewoon voor de show nog en in het dasboard zijn de apps die ik zo net heb genoemd wel werkend maar alleen via api inference voor een mooi demo. Ik ben van plan om de ALLEREERSTE operating system te bouwen voor het onderwijs. Dit is eigenlijk wat het inhoudt: 
+
+Ik wil een software applicatie ontwikkelen voor zowel windows, macOS en Linux.
+We gaan een marketplace ontwikkelen waar we "Apps" aanbieden. 
+Bij de apps kun je de volgende zaken voorstellen: 
+
+Apps waar: 
+
+- Schoolboeken te kopen zijn voor onderwijsinstellingen
+- Schoolboeken te kopen zijn voor individuen, zoals voor homeschooling
+-  StudieLoopbaan begeleider (Speech2Speech)
+- AI powered tutoring gegeven kan worden
+
+En nog veel meer. De apps kunnen door ons intern ontwikkeld zijn (Native Apps) of Apps die speciaal gemaakt zijn voor bepaalde onderwijs instellingen (private apps) of third party apps waar developers zelf hun eigen apps op onze platform zetten. Zoals Tesla bijvoorbeeld die een app ontwikkelt om scholieren of studenten bepaalde skills te leren om straks bij tesla te werken etcetera. Of een software developer die extra wilt bijverdienen en daarvoor een mooie educatieve app ontwikkelt zoals leren over health.
+
+De apps moeten dan gekocht worden of als ze gratis zijn hoeft dat niet. Die apps kunnen dan gedownload worden, beetje net als hoe je apps download op steam. 
+
+Wij bieden dus de marketplace aan, maar ook de enivronment waarin je deze apps kunt zien (soort dashboard van Mijn Apps). En ook een enviroment waar je elke individuele app kunt openen. Ik heb een foto van een odoo dashboard toegevoegd om te laten zien hoe de mijn apps dashboard eruit gaat zien. Ik ben van plan om de software applicatie in zowel nederlands als engels te krijgen. Gewoon door taal te selecteren verandert de taal van de app.  
+
+Ik weet hoe nextjs werkt en ik gebruik het liefst typescript. Maar ik heb alleen webapps gebouwd. Nooit een software applicatie zelf. Ik wil straks dat je me begeleid hierin maar ik wil niet dat je code schrijft zonder mijn toestemming. Ik wil alleen dat je meedenkt en adviseert en alleen code schrijft als ik je dat expliciet vraag. 
+
+Ik ga werken aan een demo waar ik 1 week voor de tijd heb om het te bouwen met cursor. Ik heb nooit een software applicatie gebouwd dus ik ben wel een noob in dat opzicht. Ik gebruik linux ubuntu 22 om het te bouwen.  In de demo ga ik een emotionele begeleider app bouwen en een studieloopbaan begeleider app voor middelbare school. Ik heb deze apps al gebouwd in een ander project genaamd scooly-ai dat ik ook als zip heb toegevoegd dus in principe kunnen we het meeste straks gewoon kopieeeren en plakken om beetje aanpassen om het werkend te krijgen. 
+
+De demo is echt een demo dus login en authenticatie etcetera hoeft nog niet. De apps in de marketplace zijn ook echt allemaal gewoon voor de show nog en in het dasboard zijn de apps die ik zo net heb genoemd wel werkend maar alleen via api inference voor een mooi demo. 
