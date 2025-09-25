@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Card = () => {
-  return (
+export default function Card(){  
+    
+    return (
     <StyledWrapper>
       <div className="section-banner">
         <div id="star-1">
@@ -210,4 +211,3 @@ const StyledWrapper = styled.div`
     animation: twinkling 2s infinite;
   }`;
 
-export default Card;

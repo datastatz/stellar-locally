@@ -1,11 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useRouter } from 'next/navigation';
 
 export default function EmoApp() {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push('/apps/Emo');
+  };
+
   return (
     <StyledWrapper>
       <div className="button-container">
-        <button className="brutalist-button openai button-1">
+        <button className="brutalist-button openai button-1" onClick={handleClick}>
           <div className="openai-logo">
             <svg className="openai-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" fill="currentColor"/>
