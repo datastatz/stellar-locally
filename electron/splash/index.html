@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- UNPKG is a fast, global content delivery network for everything on npm. Use it to quickly and easily load any file on npm using a URL like: -->
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self' 'unsafe-inline' data: https://unpkg.com; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://unpkg.com; frame-src 'none';"
+  />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Linking to the CSS file -->
+  <link rel="stylesheet" href="./splash.css" /> 
+</head>
+
+<body>
+  <div id="wrap">
+    <img class="logo" src="./assets/logo.png" alt="logo" />
+    <div id="lottie-wrap">
+      <!-- Lottie web component via CDN -->
+      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+      <lottie-player
+        id="lottie"
+        src="./assets/anim.json"
+        background="transparent"
+        speed="1"
+        loop
+        autoplay
+        style="width: 240px; height: 240px;"
+      ></lottie-player>
+    </div>
+  </div>
+
+  <script src="./splash.js"></script>
+</body>
+
+</html>
