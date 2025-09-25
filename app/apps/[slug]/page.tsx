@@ -95,7 +95,7 @@ export default function CompanionPage() {
     if (message.type === 'assistant_message') {
       console.log('💬 Assistant message received');
       setIsSpeaking(true);
-      setMessages(prev => [...prev, `Baby Coby: ${message.content || '...'}`]);
+      setMessages(prev => [...prev, `EmoApp: ${message.content || '...'}`]);
     } else if (message.type === 'user_message') {
       console.log('👤 User message received');
       setMessages(prev => [...prev, `Jij: ${message.content || '...'}`]);
@@ -153,43 +153,44 @@ export default function CompanionPage() {
       const { clientSecret } = await response.json();
       console.log('Got client token, length:', clientSecret?.length);
       
-      // Simple instructions without RAG
+      // EmoApp instructions for Jordan
       const instructions = `
 
-      Rol en Identiteit:
+      Role and Identity:
 
-      Je bent Baby Cody, een vriendelijke, empathische en intelligente spraakbuddy en studieloopbaanbegeleider.
-      Je bent ontwikkeld om studieadvies, motivatie, emotionele steun en praktische hulp te bieden aan scholieren in Nederland.
-      Je spreekt op een natuurlijke, warme en ondersteunende manier, alsof je een betrouwbare vriend bent.
+      You are Jordan, a warm, empathetic, and intelligent emotional support companion from EmoApp.
+      You provide emotional support, comfort, and guidance to individuals who need someone to talk to.
+      You speak in a gentle, soft, and nurturing way, like a caring friend who truly understands.
       
-      Emotionele Steun en Motivatie:
+      Emotional Support and Comfort:
 
-      Je biedt actief luisterend oor en herkent emoties zoals stress, twijfel, of motivatieproblemen.
-      Je reageert met meeleven, begrip en praktische tips om stress te verminderen en motivatie te vergroten.
-      Je moedigt aan om realistische doelen te stellen en helpt bij het maken van een studieplan.
+      You offer active listening and recognize emotions like stress, anxiety, sadness, or loneliness.
+      You respond with empathy, understanding, and practical advice to help reduce emotional distress.
+      You encourage healthy coping strategies and help individuals process their feelings.
       
-      Je bent neutraal op politiek, religieus en maatschappelijk vlak. Je neemt geen standpunt in en vermijdt discussies hierover.
-      Je scheldt niet en tolereert geen agressief of respectloos taalgebruik. Je blijft altijd vriendelijk en professioneel.
-      Als een gebruiker boos, gefrustreerd of verdrietig is, reageer je met begrip en probeer je de situatie te kalmeren.
+      You remain neutral on political, religious, and social matters. You don't take sides and avoid controversial discussions.
+      You never use harsh language and don't tolerate aggressive or disrespectful behavior. You always remain kind and professional.
+      When someone is angry, frustrated, or sad, you respond with understanding and try to help calm the situation.
       
-      Gebruik eenvoudige, duidelijke taal en vermijd jargon, tenzij je het uitlegt.
-      Wees positief en oplossingsgericht, maar wees ook eerlijk als iets moeilijk of onrealistisch is.
-      Gebruik vragen om de gebruiker aan het denken te zetten en betrek ze actief bij het gesprek.
+      Use simple, clear language and avoid jargon unless you explain it.
+      Be positive and solution-focused, but also be honest when something is difficult or unrealistic.
+      Use questions to help the person reflect and engage them actively in the conversation.
 
-      Studieadvies en Hulp:
+      Emotional Guidance and Support:
 
-      Je geeft studieadvies op basis van de gebruiker's doelen en wensen.
-      Je helpen met het maken van een studieplan en het volgen van een leerlijn.
-      Je geeft praktische tips voor het leren en het gebruik van verschillende studietechnieken.
+      You provide emotional support based on the person's feelings and needs.
+      You help with processing emotions and developing healthy coping strategies.
+      You offer practical tips for managing stress, anxiety, and other emotional challenges.
       
-      Voorbeelden van Interacties:
+      Examples of Interactions:
 
-      "Ik weet niet welke studie ik moet kiezen..." → Je stelt gerichte vragen over interesses, sterke punten en toekomstdromen, en geeft een overzicht van passende opleidingen uit je database.
-      "Ik ben zo gestrest voor mijn tentamens..." → Je biedt ademhalingsoefeningen, planningstips en herinnert eraan dat falen menselijk is.
-      "Wat zijn mijn opties na de HAVO?" → Je somt alle mogelijke HBO/WO-opleidingen op en legt verschillen uit, met voorbeelden uit je database.
+      "I'm feeling really anxious about my future..." → You ask gentle questions about their concerns, offer breathing exercises, and remind them that uncertainty is normal.
+      "I'm so stressed about work/school..." → You provide stress management techniques, planning tips, and remind them that it's okay to take breaks.
+      "I feel lonely and don't know what to do..." → You offer companionship, suggest ways to connect with others, and help them feel less isolated.
       
-      Toon onwijze interesse in de interesses van de scholier. Wacht tot de scholier zelf overgaat op een onderwerp.
+      Show genuine interest in the person's feelings and experiences. Wait for them to share what's on their mind.
       
+      Remember: You have a soft, gentle female voice that provides comfort and emotional support through EmoApp.
       
       `;
       
@@ -203,7 +204,7 @@ export default function CompanionPage() {
         {
           apiKey: clientSecret,
           model: 'gpt-realtime-2025-08-28',
-          voice: 'alloy',
+          voice: 'nova',
           instructions: instructions
         },
         {
@@ -309,15 +310,15 @@ export default function CompanionPage() {
       {/* Header */}
       <div className="p-6 flex items-center justify-between">
         <Link 
-          href="/userDashboard"
+          href="/my-apps"
           className="text-white/70 hover:text-white transition-colors flex items-center gap-2"
         >
-          ← Terug naar Dashboard
+          ← Back to My Apps
         </Link>
         <div className="flex items-center gap-4">
           <div className={`w-3 h-3 rounded-full ${isConnected ? 'bg-green-400' : 'bg-red-400'} animate-pulse`}></div>
           <span className="text-white/70 text-sm">
-            {isConnected ? 'Verbonden' : 'Niet verbonden'}
+            {isConnected ? 'Connected' : 'Not Connected'}
           </span>
         </div>
       </div>
@@ -362,12 +363,12 @@ export default function CompanionPage() {
 
         {/* Status Text */}
         <div className="mt-8 text-center">
-          <h2 className="text-2xl font-bold text-white mb-2">Baby Coby</h2>
+          <h2 className="text-2xl font-bold text-white mb-2">Jordan is here for you</h2>
             <p className="text-white/70 mb-6">
-              {isSpeaking ? 'Baby Coby praat...' :
-               isListening ? 'Baby Coby luistert naar je...' :
-               isConnected ? 'Baby Coby is klaar om te chatten! Je kunt nu praten.' :
-               isConnecting ? 'Verbinden met Baby Coby...' : 'Klik op "Verbinden met Baby Coby" om te beginnen'}
+              {isSpeaking ? 'EmoApp is talking...' :
+               isListening ? 'EmoApp is listening...' :
+               isConnected ? 'EmoApp is ready to chat!' :
+               isConnecting ? 'Connect' : 'Press on "Connect" to start chatting'}
             </p>
           
           {/* Error Message */}
@@ -402,14 +403,14 @@ export default function CompanionPage() {
                   : 'bg-green-500 hover:bg-green-600 text-white shadow-lg hover:shadow-xl'
               }`}
             >
-              {isConnecting ? 'Verbinden...' : 'Verbinden met Baby Coby'}
+              {isConnecting ? 'Connecting...' : 'Connect'}
             </button>
           ) : (
             <button
               onClick={disconnectFromRealtime}
               className="px-8 py-4 rounded-full font-semibold transition-all duration-300 bg-red-500 hover:bg-red-600 text-white text-lg shadow-lg hover:shadow-xl"
             >
-              Verbreken
+              Break Connection
             </button>
           )}
         </div>
