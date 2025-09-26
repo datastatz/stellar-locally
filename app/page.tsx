@@ -30,36 +30,27 @@ export default function Dashboard() {
 
       {/* Main Content */}
       <main className="relative min-h-screen flex flex-col items-center justify-center">
-        {/* Logo above Terminal */}
-        <div className="mb-8">
-          <img src="/logo.png" alt="Logo" className="h-60 w-360 object-contain" />
-        </div>
-        
-        {/* Terminal in center */}
-        <div className="scale-75">
-          <Terminal />
-        </div>
-        
-        {/* Cards positioned around the globe */}
-
-        {/* Top Left Card */}
-        <div className="absolute top-35 left-60 scale-155">
-          <Card />
-        </div>
-        
-        {/* Top Right Card */}
-        <div className="absolute top-35 right-60 scale-155">
-          <Card />
-        </div>
-        
-        {/* Bottom Left Card */}
-        <div className="absolute top-170 left-60 transform -translate-y-1/2 scale-155">
-          <Card />
-        </div>
-        
-        {/* Bottom Right Card */}
-        <div className="absolute top-170 right-60 transform -translate-y-1/2 scale-155">
-          <MyAppsCard />
+        {/* Cards with proper spacing */}
+        <div className="grid grid-cols-2 gap-8 max-w-4xl">
+          {/* Top Left Card */}
+          <div className="scale-100">
+            <Card />
+          </div>
+          
+          {/* Top Right Card */}
+          <div className="scale-100">
+            <Card />
+          </div>
+          
+          {/* Bottom Left Card */}
+          <div className="scale-100">
+            <Card />
+          </div>
+          
+          {/* Bottom Right Card */}
+          <div className="scale-100">
+            <MyAppsCard />
+          </div>
         </div>
         
       </main>

@@ -15,8 +15,9 @@ export default function EmoApp() {
         <button className="brutalist-button openai button-1" onClick={handleClick}>
           <div className="openai-logo">
             <svg className="openai-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" fill="currentColor"/>
-              <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z" fill="currentColor"/>
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="white" strokeWidth="2" fill="none"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="white" strokeWidth="2" fill="none"/>
+              <path d="M8 7h8M8 11h8M8 15h5" stroke="white" strokeWidth="1.5" fill="none"/>
             </svg>
           </div>
           <div className="button-text">
@@ -55,17 +56,17 @@ const StyledWrapper = styled.div`
 
   /* Styles for the first button */
   .button-1 {
-    background-color: #063525;
-    border: 3px solid #42c498;
+    background-color: #4a2c00;
+    border: 3px solid #ff8c00;
     border-radius: 12px;
     box-shadow: 4px 4px 1px #000000;
   }
 
   .button-1:hover {
-    background-color: #1a5c46;
+    background-color: #6b3e00;
     border-color: #030504;
     transform: translate(-6px, -6px) rotate(1deg);
-    box-shadow: 10px 10px 0 #000000, 15px 15px 20px rgba(64, 164, 122, 0.2);
+    box-shadow: 10px 10px 0 #000000, 15px 15px 20px rgba(255, 140, 0, 0.2);
   }
 
   .button-1::before,

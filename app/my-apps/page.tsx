@@ -1,5 +1,6 @@
 'use client'
 import EmoApp from '../data/EmoApp';
+import Book from '../data/Book';
 
 
 export default function MyApps() {
@@ -12,7 +13,7 @@ export default function MyApps() {
         {/* EmoApp cards in a row with spacing */}
         <div className="flex justify-center items-center gap-8 px-8">
           <EmoApp />
-          <EmoApp />
+          <Book />
           <EmoApp />
         </div>
       </div>
