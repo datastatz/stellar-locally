@@ -1,7 +1,7 @@
 'use client'
 import EmoApp from '../data/EmoApp';
 import Book from '../data/Book';
-
+import AiTutor from '../data/AiTutor';
 
 export default function MyApps() {
   return (
@@ -14,7 +14,7 @@ export default function MyApps() {
         <div className="flex justify-center items-center gap-8 px-8">
           <EmoApp />
           <Book />
-          <EmoApp />
+          <AiTutor />
         </div>
       </div>
     </div>
