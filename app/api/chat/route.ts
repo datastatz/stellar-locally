@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendBabyStellarMessage, streamBabyStellarMessage, ChatMessage } from '@/lib/chat-service';
 
-export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest, context: RouteContext<'/api/chat'>) {
   try {
     const { message, images = [], conversationHistory = [], stream = false } = await request.json();
 
@@ -27,6 +27,9 @@ export async function POST(request: NextRequest) {
       timestamp: new Date(msg.timestamp),
       images: msg.images || undefined,
     }));
+
+    // Access params to satisfy Next.js route handler signature even though this route has none
+    await context.params;
 
     if (stream) {
       // Stream response from Baby Stellar

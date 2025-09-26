@@ -21,3 +21,7 @@ OLLAMA_HOST=0.0.0.0 ollama serve
 
 
 (en firewall openzetten). Maar zolang je alles op één machine draait, is 127.0.0.1:11434 prima.
+
+
+**Paint**
+tldraw
