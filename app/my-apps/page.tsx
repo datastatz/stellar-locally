@@ -2,6 +2,7 @@
 import EmoApp from '../data/EmoApp';
 import Book from '../data/Book';
 import AiTutor from '../data/AiTutor';
+import Paint from '../data/Paint';
 
 export default function MyApps() {
   return (
@@ -15,6 +16,7 @@ export default function MyApps() {
           <EmoApp />
           <Book />
           <AiTutor />
+          <Paint />
         </div>
       </div>
     </div>

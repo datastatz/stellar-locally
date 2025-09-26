@@ -2,6 +2,8 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { ArrowLeft } from "lucide-react"
 
 interface SideBarProps {
   className?: string
@@ -9,6 +11,7 @@ interface SideBarProps {
 
 export default function SideBar({ className = "" }: SideBarProps) {
   const [activeItem, setActiveItem] = useState("chat")
+  const router = useRouter()
 
   const menuItems = [
     {
@@ -25,13 +28,13 @@ export default function SideBar({ className = "" }: SideBarProps) {
     },
     {
       id: "progress",
-      label: "Voortgang",
+      label: "Progress",
       icon: "📈",
       href: "/userDashboard/progress"
     },
     {
       id: "settings",
-      label: "Instellingen",
+      label: "Settings",
       icon: "⚙️",
       href: "/userDashboard/settings"
     }
@@ -40,29 +43,33 @@ export default function SideBar({ className = "" }: SideBarProps) {
   const quickActions = [
     {
       id: "new-chat",
-      label: "Nieuwe Chat",
+      label: "New Chat",
       icon: "✨",
       action: () => console.log("New chat")
     },
     {
       id: "history",
-      label: "Geschiedenis",
+      label: "History",
       icon: "📚",
       action: () => console.log("View history")
     }
   ]
 
   return (
-    <div className={`h-full flex flex-col bg-background border-r border-border ${className}`}>
+    <div className={`h-full flex flex-col bg-slate-50 border-r border-slate-200 ${className}`}>
      
       {/* User Profile */}
-      <div className="p-6 border-b border-border">
+      <div className="p-6 border-b border-slate-200">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-sm">
-            <span className="text-white text-sm">👤</span>
-          </div>
+          <button
+            onClick={() => router.push('/my-apps')}
+            className="flex items-center gap-2 px-3 py-2 text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-all duration-200 group"
+          >
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
+            <span className="text-sm font-medium">My Apps</span>
+          </button>
           <div className="flex-1">
-            <h3 className="font-medium text-foreground">Scholier</h3>
+            <h3 className="font-medium text-slate-800">Student</h3>
             <p className="text-sm text-muted-foreground">Demo Account</p>
           </div>
           <div className="flex items-center gap-2">
@@ -73,14 +80,14 @@ export default function SideBar({ className = "" }: SideBarProps) {
       </div>
 
       {/* Quick Actions */}
-      <div className="p-6 border-b border-border">
-        <h4 className="text-xs font-medium text-muted-foreground mb-3">Snelle Acties</h4>
+      <div className="p-6 border-b border-slate-200">
+        <h4 className="text-xs font-medium text-slate-600 mb-3">Quick Actions</h4>
         <div className="space-y-1">
           {quickActions.map((action) => (
             <button
               key={action.id}
               onClick={action.action}
-              className="group w-full flex items-center gap-3 px-3 py-2 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors text-left"
+              className="group w-full flex items-center gap-3 px-3 py-2 rounded-md hover:bg-slate-100 hover:text-slate-800 transition-colors text-left text-slate-600"
             >
               <span className="text-sm">{action.icon}</span>
               <span className="text-sm font-medium">{action.label}</span>
@@ -91,7 +98,7 @@ export default function SideBar({ className = "" }: SideBarProps) {
 
       {/* Navigation Menu */}
       <div className="flex-1 p-6">
-        <h4 className="text-xs font-medium text-muted-foreground mb-3">Navigatie</h4>
+        <h4 className="text-xs font-medium text-slate-600 mb-3">Navigation</h4>
         <nav className="space-y-1">
           {menuItems.map((item) => (
             <Link
@@ -100,8 +107,8 @@ export default function SideBar({ className = "" }: SideBarProps) {
               onClick={() => setActiveItem(item.id)}
               className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                 activeItem === item.id
-                  ? "bg-accent text-accent-foreground"
-                  : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                  ? "bg-blue-100 text-blue-800"
+                  : "text-slate-600 hover:bg-slate-100 hover:text-slate-800"
               }`}
             >
               <span className="text-sm">{item.icon}</span>
@@ -112,7 +119,7 @@ export default function SideBar({ className = "" }: SideBarProps) {
       </div>
 
       {/* Footer */}
-      <div className="p-6 border-t border-border">
+      <div className="p-6 border-t border-slate-200">
         <div className="flex items-center justify-between">
           <div className="text-xs text-muted-foreground">
             © Stellar Education
@@ -121,7 +128,7 @@ export default function SideBar({ className = "" }: SideBarProps) {
             href="/"
             className="text-xs text-muted-foreground hover:text-foreground transition-colors"
           >
-            Terug naar Home
+            Back to Home
           </Link>
         </div>
       </div>

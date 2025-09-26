@@ -154,20 +154,10 @@ export function ChatInterface() {
       <div className="p-6 border-b border-border bg-card">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-lg overflow-hidden shadow-sm">
-              <Image
-                src="/baby-stellar.svg"
-                alt="Baby Stellar"
-                width={48}
-                height={48}
-                quality={100}
-                priority
-                className="w-full h-full object-cover"
-              />
-            </div>
+            
             <div>
-              <h2 className="text-lg font-semibold text-card-foreground">Chat met Baby Stellar</h2>
-              <p className="text-sm text-muted-foreground">Jouw AI studiebuddy</p>
+              <h2 className="text-lg font-semibold text-card-foreground">Chat with AI TUTOR</h2>
+              <p className="text-sm text-muted-foreground">Your AI study buddy</p>
             </div>
           </div>
           <div className="text-right">
@@ -175,7 +165,7 @@ export function ChatInterface() {
               {isClient ? `Level ${currentLevel}` : 'Level 1'}
             </div>
             <div className="text-xs text-muted-foreground">
-              {isClient ? `${xpToNextLevel} XP naar volgend level` : '100 XP naar volgend level'}
+              {isClient ? `${xpToNextLevel} XP to next level` : '100 XP to next level'}
             </div>
           </div>
         </div>
@@ -185,7 +175,7 @@ export function ChatInterface() {
       {/* XP Animation */}
       {showXpAnimation && (
         <div className="fixed top-20 right-4 bg-primary text-primary-foreground px-4 py-2 rounded-lg shadow-lg animate-bounce z-50">
-          +10 XP verdiend! ✨
+          +10 XP earned! ✨
         </div>
       )}
 
@@ -251,7 +241,7 @@ export function ChatInterface() {
             onChange={(e) => setInputValue(e.target.value)}
             onKeyPress={handleKeyPress}
             onPaste={handlePaste}
-            placeholder="Stel een vraag aan Baby Stellar... (of plak een foto met Ctrl+V)"
+            placeholder="Ask Baby Stellar a question... (or paste a photo with Ctrl+V)"
             className="flex-1 px-4 py-3 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring disabled:cursor-not-allowed disabled:opacity-50"
           />
           <button
@@ -259,17 +249,17 @@ export function ChatInterface() {
             disabled={(!inputValue.trim() && selectedImages.length === 0) || isLoading}
             className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
           >
-            {isLoading ? "Versturen..." : "Verstuur"}
+            {isLoading ? "Sending..." : "Send"}
           </button>
         </div>
         <div className="mt-2 text-xs text-muted-foreground text-center">
-          Druk op Enter om te versturen • Elke vraag = +10 XP
+          Press Enter to send • Each question = +10 XP
         </div>
 
         {/* Selected Images Preview */}
         {selectedImages.length > 0 && (
           <div className="mt-4">
-            <div className="text-sm text-muted-foreground mb-2">Geselecteerde foto&apos;s:</div>
+            <div className="text-sm text-muted-foreground mb-2">Selected photos:</div>
             <div className="flex flex-wrap gap-2">
               {selectedImages.map((image, index) => (
                 <div key={index} className="relative group">
@@ -301,7 +291,7 @@ export function ChatInterface() {
             className="inline-flex items-center gap-2 rounded-lg border border-input bg-background px-4 py-2 text-sm font-medium text-foreground hover:bg-muted transition-colors"
           >
             <span className="inline-block h-4 w-4 rounded-full border-2 border-foreground" />
-            {showUnitCircleManual ? "Verberg eenheidscirkel" : "Toon eenheidscirkel"}
+            {showUnitCircleManual ? "Hide unit circle" : "Show unit circle"}
           </button>
 
           <button
@@ -310,7 +300,7 @@ export function ChatInterface() {
             className="inline-flex items-center gap-2 rounded-lg border border-input bg-background px-4 py-2 text-sm font-medium text-foreground hover:bg-muted transition-colors"
           >
             <span className="inline-block h-4 w-4 rounded-sm border-2 border-foreground" />
-            {showPeriodiekManual ? "Verberg periodiek systeem" : "Toon periodiek systeem"}
+            {showPeriodiekManual ? "Hide periodic table" : "Show periodic table"}
           </button>
 
           <button
@@ -319,7 +309,7 @@ export function ChatInterface() {
             className="inline-flex items-center gap-2 rounded-lg border border-input bg-background px-4 py-2 text-sm font-medium text-foreground hover:bg-muted transition-colors"
           >
             <span className="inline-block h-5 w-4">🖼️</span>
-            Foto toevoegen
+            Add photo
           </button>
         </div>
       </div>
