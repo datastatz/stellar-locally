@@ -6,7 +6,7 @@ export default function EmoApp() {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push('/emo/Emo');
+    router.push('/book/aibook');
   };
 
   return (
