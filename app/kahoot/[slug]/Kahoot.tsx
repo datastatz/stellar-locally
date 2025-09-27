@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState, type CSSProperties } from 'react';
+import { useRouter } from 'next/navigation';
 import { quiz as quizData } from './quizData';
 
 type RawQuestion = (typeof quizData)['questions'][number];
@@ -23,8 +24,8 @@ type AnswerState = {
 
 const DEFAULT_LOCALE = {
   startQuizBtn: 'Start',
-  nextQuestionBtn: 'Volgende vraag',
-  resultPageHeaderText: 'Jouw score:',
+  nextQuestionBtn: 'Next question',
+  resultPageHeaderText: 'Your score:',
 };
 
 function normalizeQuestion(raw: RawQuestion): NormalizedQuestion {
@@ -41,6 +42,8 @@ function normalizeQuestion(raw: RawQuestion): NormalizedQuestion {
 }
 
 export default function Kahoot() {
+  const router = useRouter();
+  
   const quiz = useMemo(() => {
     const questions = quizData.questions.map(normalizeQuestion);
     const maxScore = questions.reduce((sum, q) => sum + q.point, 0);
@@ -87,8 +90,8 @@ export default function Kahoot() {
         isCorrect,
         points: isCorrect ? currentQuestion.point : 0,
         feedback: isCorrect
-          ? currentQuestion.messageForCorrectAnswer ?? 'Goed gedaan!'
-          : currentQuestion.messageForIncorrectAnswer ?? 'Helaas, probeer de volgende.',
+          ? currentQuestion.messageForCorrectAnswer ?? 'Well done!'
+          : currentQuestion.messageForIncorrectAnswer ?? 'Sorry, try the next one.',
       };
       return updated;
     });
@@ -121,7 +124,23 @@ export default function Kahoot() {
   const answeredQuestions = answers.filter((answer) => answer.selectedIndex !== null).length;
 
   return (
-    <div style={styles.container}>
+    <div style={styles.pageWrapper}>
+      <button 
+        onClick={() => router.push('/my-apps')} 
+        style={styles.backButton}
+        type="button"
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = '#f3f4f6';
+          e.currentTarget.style.borderColor = '#9ca3af';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = '#ffffff';
+          e.currentTarget.style.borderColor = '#e5e7eb';
+        }}
+      >
+        ← Back to My Apps
+      </button>
+      <div style={styles.container}>
       <div style={styles.header}>
         <h1 style={styles.title}>{quiz.title}</h1>
         {quiz.synopsis && <p style={styles.synopsis}>{quiz.synopsis}</p>}
@@ -137,7 +156,7 @@ export default function Kahoot() {
           />
         </div>
         <span style={styles.progressText}>
-          Vraag {currentQuestionIndex + 1} van {quiz.totalQuestions}
+          Question {currentQuestionIndex + 1} of {quiz.totalQuestions}
         </span>
       </div>
 
@@ -207,40 +226,67 @@ export default function Kahoot() {
             }}
           >
             {currentQuestionIndex === quiz.totalQuestions - 1
-              ? quiz.locale.resultPageHeaderText ?? 'Resultaat'
-              : quiz.locale.nextQuestionBtn ?? 'Volgende vraag'}
+              ? quiz.locale.resultPageHeaderText ?? 'Result'
+              : quiz.locale.nextQuestionBtn ?? 'Next question'}
           </button>
 
           <p style={styles.meta}>
-            Beantwoord: {answeredQuestions}/{quiz.totalQuestions} • Totaal punten:{' '}
+            Answered: {answeredQuestions}/{quiz.totalQuestions} • Total points:{' '}
             {totalPointsEarned}/{quiz.totalPoints}
           </p>
         </div>
       ) : (
         <div style={styles.card}>
-          <h2 style={styles.question}>{quiz.locale.resultPageHeaderText ?? 'Jouw score:'}</h2>
+          <h2 style={styles.question}>{quiz.locale.resultPageHeaderText ?? 'Your score:'}</h2>
           <p style={styles.summaryLine}>
-            Correcte antwoorden: {correctlyAnswered} / {quiz.totalQuestions}
+            Correct answers: {correctlyAnswered} / {quiz.totalQuestions}
           </p>
           <p style={styles.summaryLine}>
-            Punten: {totalPointsEarned} / {quiz.totalPoints}
+            Points: {totalPointsEarned} / {quiz.totalPoints}
           </p>
           <button type="button" onClick={handleRestart} style={styles.primaryButton}>
-            Probeer opnieuw
+            Try again
           </button>
         </div>
       )}
+      </div>
     </div>
   );
 }
 
 const styles: Record<string, CSSProperties> = {
+  pageWrapper: {
+    minHeight: '100vh',
+    backgroundColor: '#e0f2fe', // Light blue background for entire page
+    padding: '20px 0',
+    position: 'relative',
+  },
+  backButton: {
+    position: 'absolute',
+    top: '20px',
+    left: '20px',
+    padding: '8px 16px',
+    backgroundColor: '#ffffff',
+    border: '2px solid #e5e7eb',
+    borderRadius: '8px',
+    color: '#374151',
+    fontSize: '14px',
+    fontWeight: '500',
+    cursor: 'pointer',
+    transition: 'all 0.2s ease',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+    zIndex: 10,
+  },
   container: {
     maxWidth: 760,
     margin: '40px auto',
     padding: '0 16px 32px',
     color: '#111827',
     fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+    backgroundColor: '#ffffff', // White background for quiz card
+    borderRadius: '12px',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+    minHeight: '80vh',
   },
   header: {
     textAlign: 'center',
