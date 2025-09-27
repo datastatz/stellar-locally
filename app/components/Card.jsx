@@ -3,16 +3,11 @@ import styled from 'styled-components';
 import { useRouter } from 'next/navigation';
 
 export default function Card (){
-  const router = useRouter();
-
-  const handleClick = () => {
-    router.push('/learn-store/');
-  };
-
+  
   return (
     <StyledWrapper>
       <div className="container noselect">
-        <div className="canvas" onClick={handleClick} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && handleClick()}>
+        <div className="canvas">
           <div className="tracker tr-1" />
           <div className="tracker tr-2" />
           <div className="tracker tr-3" />

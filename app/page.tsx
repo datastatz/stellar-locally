@@ -31,17 +31,19 @@ export default function Dashboard() {
       {/* Main Content */}
       <main className="relative min-h-screen flex flex-col items-center justify-center">
         {/* Cards with proper spacing */}
-        <div className="grid grid-cols-2 gap-8 max-w-4xl">
-          {/* Top Left Card */}
-          <div className="scale-100">
-            <Card />
+        <div className="grid grid-cols-2 gap-16 max-w-7xl w-full px-8 ml-55">
+          {/* Left Card */}
+          <div className="w-96 h-96 flex items-center justify-center">
+            <div className="scale-200">
+              <Card />
+            </div>
           </div>
           
-         
-          
-          {/* Bottom Right Card */}
-          <div className="scale-100">
-            <MyAppsCard />
+          {/* Right Card */}
+          <div className="w-96 h-96 flex items-center justify-center">
+            <div className="scale-200">
+              <MyAppsCard />
+            </div>
           </div>
         </div>
         
