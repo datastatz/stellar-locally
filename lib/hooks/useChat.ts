@@ -48,7 +48,7 @@ export function useChat() {
       
       const aiMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
-        content: data.response,
+        content: data.message,
         role: 'assistant',
         timestamp: new Date()
       }

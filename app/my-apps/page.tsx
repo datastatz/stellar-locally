@@ -3,6 +3,7 @@ import EmoApp from '../data/EmoApp';
 import Book from '../data/Book';
 import AiTutor from '../data/AiTutor';
 import Paint from '../data/Paint';
+import Kahoot from '../data/Kahoot';
 
 export default function MyApps() {
   return (
@@ -17,6 +18,7 @@ export default function MyApps() {
           <Book />
           <AiTutor />
           <Paint />
+          <Kahoot />
         </div>
       </div>
     </div>
