@@ -37,15 +37,7 @@ export default function Dashboard() {
             <Card />
           </div>
           
-          {/* Top Right Card */}
-          <div className="scale-100">
-            <Card />
-          </div>
-          
-          {/* Bottom Left Card */}
-          <div className="scale-100">
-            <Card />
-          </div>
+         
           
           {/* Bottom Right Card */}
           <div className="scale-100">
