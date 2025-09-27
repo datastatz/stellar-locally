@@ -11,7 +11,7 @@ export function XPBar({ currentXP, totalXP }: XPBarProps) {
   return (
     <div className="mt-4">
       <div className="flex justify-between items-center mb-2">
-        <span className="text-xs font-medium text-muted-foreground">Level Voortgang</span>
+        <span className="text-xs font-medium text-muted-foreground">Level Progress</span>
         <span className="text-xs font-medium text-muted-foreground">{currentXP}/{totalXP} XP</span>
       </div>
       <div className="w-full h-2 rounded-full bg-muted overflow-hidden">
