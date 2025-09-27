@@ -6,7 +6,7 @@ export default function Kahoot() {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push('/kahoot/Kahoot');
+    router.push('/kahoot/KahootPage');
   };
 
   return (

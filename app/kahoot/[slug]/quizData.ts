@@ -1,0 +1,52 @@
+export const quiz = {
+    quizTitle: "Stellar Quick Quiz",
+    quizSynopsis: "Short demo quiz with score and feedback.",
+    nrOfQuestions: "4",
+    appLocale: {
+      landingHeaderText: "Answer the questions and check your score!",
+      question: "Question",
+      startQuizBtn: "Start",
+      resultFilterAll: "All",
+      nextQuestionBtn: "Next",
+      resultPageHeaderText: "Your score:",
+    },
+    questions: [
+      {
+        question: "Which language compiles to native code and is very fast?",
+        questionType: "text",
+        answerSelectionType: "single",
+        answers: ["Python", "Go (Golang)", "Ruby", "PHP"],
+        correctAnswer: "2",
+        messageForCorrectAnswer: "Correct! Go is blazing fast.",
+        messageForIncorrectAnswer: "Nope — the correct answer is Go.",
+        point: "5",
+      },
+      {
+        question: "What is the standard 3D file format for the web?",
+        questionType: "text",
+        answerSelectionType: "single",
+        answers: ["FBX", "GLB/GLTF", "OBJ", "STEP"],
+        correctAnswer: "2",
+        messageForCorrectAnswer: "Right: glTF/GLB is web-friendly.",
+        messageForIncorrectAnswer: "The correct answer is GLB/GLTF.",
+        point: "5",
+      },
+      {
+        question: "Which library is commonly used for 3D in React?",
+        questionType: "text",
+        answerSelectionType: "single",
+        answers: ["react-three-fiber", "Lodash", "Redux", "Axios"],
+        correctAnswer: "1",
+        point: "5",
+      },
+      {
+        question: "True or false: Epigenetics = same genotype, different expression.",
+        questionType: "text",
+        answerSelectionType: "single",
+        answers: ["True", "False"],
+        correctAnswer: "1",
+        point: "5",
+      },
+    ],
+  };
+  
