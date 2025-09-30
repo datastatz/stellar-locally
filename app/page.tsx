@@ -20,7 +20,7 @@ export default function Dashboard() {
        
         <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-3">
           <Navbar
-            onHome={() => router.push("/dashboard")}
+            onHome={() => console.log("Home")}
             onSearch={() => console.log("Search")}
             onProfile={() => console.log("Profile")}
             onCart={() => console.log("Cart")}
