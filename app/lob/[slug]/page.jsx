@@ -1,8 +1,24 @@
+import {userRouter} from "next/navigation";
+
+
+
+
+
 
 export default function Lob(){
 
+const router = useRouter();
+
+const handleClick = () => {
+    router.push('/my-apps');
+};
+
+
 return (
+
 <>
+
+<button onClick={handleClick}>Back to My Apps</button>
     {/* Adding the Lob chatbot  */}
     <iframe 
         src="https://bey.chat/60f73b4b-2a3b-4e30-a5ce-7b4f7d39f65f" 
