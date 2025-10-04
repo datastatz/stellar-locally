@@ -9,8 +9,8 @@ const appData = {
     {
       id: 1,
       name: 'Quantum Physics Master',
-      price: '$29.99',
-      originalPrice: '$49.99',
+      price: 'Free',
+      originalPrice: null,
       rating: 4.8,
       downloads: '12.5K',
       icon: '📚',
@@ -22,8 +22,8 @@ const appData = {
     {
       id: 2,
       name: 'Mathematics Pro',
-      price: '$19.99',
-      originalPrice: '$39.99',
+      price: 'Free',
+      originalPrice: null,
       rating: 4.9,
       downloads: '8.2K',
       icon: '🔢',
@@ -35,8 +35,8 @@ const appData = {
     {
       id: 3,
       name: 'History Explorer',
-      price: '$24.99',
-      originalPrice: '$44.99',
+      price: '€1.99',
+      originalPrice: '€4.99',
       rating: 4.7,
       downloads: '6.8K',
       icon: '🏛️',
@@ -50,8 +50,8 @@ const appData = {
     {
       id: 4,
       name: 'AI Math Tutor',
-      price: '$14.99',
-      originalPrice: '$24.99',
+      price: 'Free',
+      originalPrice: null,
       rating: 4.9,
       downloads: '15.3K',
       icon: '🤖',
@@ -63,8 +63,8 @@ const appData = {
     {
       id: 5,
       name: 'Language Learning Pro',
-      price: '$18.99',
-      originalPrice: '$28.99',
+      price: '€2.49',
+      originalPrice: '€4.99',
       rating: 4.6,
       downloads: '9.7K',
       icon: '🌍',
@@ -76,8 +76,8 @@ const appData = {
     {
       id: 6,
       name: 'Coding Mentor',
-      price: '$22.99',
-      originalPrice: '$32.99',
+      price: 'Free',
+      originalPrice: null,
       rating: 4.8,
       downloads: '11.2K',
       icon: '💻',
@@ -91,8 +91,8 @@ const appData = {
     {
       id: 7,
       name: 'EduQuest Adventure',
-      price: '$9.99',
-      originalPrice: '$19.99',
+      price: 'Free',
+      originalPrice: null,
       rating: 4.5,
       downloads: '25.1K',
       icon: '🎮',
@@ -104,8 +104,8 @@ const appData = {
     {
       id: 8,
       name: 'Quiz Master Pro',
-      price: '$7.99',
-      originalPrice: '$14.99',
+      price: '€1.99',
+      originalPrice: '€3.99',
       rating: 4.7,
       downloads: '18.6K',
       icon: '🧠',
@@ -117,8 +117,8 @@ const appData = {
     {
       id: 9,
       name: 'Science Simulator',
-      price: '$12.99',
-      originalPrice: '$22.99',
+      price: '€2.99',
+      originalPrice: '€5.99',
       rating: 4.8,
       downloads: '7.4K',
       icon: '🔬',
@@ -132,8 +132,8 @@ const appData = {
     {
       id: 10,
       name: 'Mindful Learning',
-      price: '$11.99',
-      originalPrice: '$21.99',
+      price: 'Free',
+      originalPrice: null,
       rating: 4.9,
       downloads: '13.8K',
       icon: '🧘',
@@ -145,8 +145,8 @@ const appData = {
     {
       id: 11,
       name: 'Study Breaks',
-      price: '$6.99',
-      originalPrice: '$12.99',
+      price: 'Free',
+      originalPrice: null,
       rating: 4.4,
       downloads: '16.2K',
       icon: '⏰',
@@ -158,8 +158,8 @@ const appData = {
     {
       id: 12,
       name: 'Sleep & Study',
-      price: '$8.99',
-      originalPrice: '$16.99',
+      price: '€1.49',
+      originalPrice: '€2.99',
       rating: 4.6,
       downloads: '9.1K',
       icon: '😴',
@@ -186,8 +186,8 @@ const appData = {
     {
       id: 14,
       name: 'Career Path Guide',
-      price: '$15.99',
-      originalPrice: '$25.99',
+      price: '€2.99',
+      originalPrice: '€4.99',
       rating: 4.7,
       downloads: '14.3K',
       icon: '💼',
@@ -199,8 +199,8 @@ const appData = {
     {
       id: 15,
       name: 'Internship Tracker',
-      price: '$9.99',
-      originalPrice: '$18.99',
+      price: 'Free',
+      originalPrice: null,
       rating: 4.5,
       downloads: '8.9K',
       icon: '📋',
@@ -234,9 +234,13 @@ export default function LearnStore() {
   const sortedApps = [...searchFilteredApps].sort((a, b) => {
     switch (sortBy) {
       case 'price-low':
-        return parseFloat(a.price.replace('$', '')) - parseFloat(b.price.replace('$', ''));
+        const priceA = a.price === 'Free' ? 0 : parseFloat(a.price.replace('€', ''));
+        const priceB = b.price === 'Free' ? 0 : parseFloat(b.price.replace('€', ''));
+        return priceA - priceB;
       case 'price-high':
-        return parseFloat(b.price.replace('$', '')) - parseFloat(a.price.replace('$', ''));
+        const priceAHigh = a.price === 'Free' ? 0 : parseFloat(a.price.replace('€', ''));
+        const priceBHigh = b.price === 'Free' ? 0 : parseFloat(b.price.replace('€', ''));
+        return priceBHigh - priceAHigh;
       case 'rating':
         return b.rating - a.rating;
       case 'downloads':
@@ -247,19 +251,32 @@ export default function LearnStore() {
   });
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen relative bg-white">
+      {/* Grid Background */}
+      <div className="fixed inset-0 z-0" style={{
+        backgroundColor: "white",
+        backgroundImage: `
+          linear-gradient(to right, rgba(71,85,105,0.15) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(71,85,105,0.15) 1px, transparent 1px),
+          radial-gradient(circle at 50% 60%, rgba(236,72,153,0.15) 0%, rgba(168,85,247,0.05) 40%, transparent 70%)
+        `,
+        backgroundSize: "40px 40px, 40px 40px, 100% 100%",
+      }}></div>
+      
       {/* Header */}
-      <div className="brutalist-header">
-        <div className="header-content">
-          <button 
-            onClick={() => router.push('/')} 
-            className="brutalist-back-btn"
-          >
-            <div className="back-icon">←</div>
-            <span>Back to Dashboard</span>
-          </button>
-          <h1 className="header-title">Learn Store</h1>
-          <div className="header-spacer"></div>
+      <div className="w-full bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-4">
+            <button 
+              onClick={() => router.push('/')} 
+              className="flex items-center space-x-2 text-slate-700 hover:text-slate-900 transition-colors"
+            >
+              <div className="text-xl">←</div>
+              <span>Back to Dashboard</span>
+            </button>
+            <h1 className="text-2xl font-bold text-slate-700">Learn Store</h1>
+            <div className="w-32"></div>
+          </div>
         </div>
       </div>
 
@@ -267,8 +284,8 @@ export default function LearnStore() {
       <Banner />
 
       {/* Search and Filters */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="brutalist-search-container">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 relative z-10">
+        <div className="search-container">
           <div className="search-filters-wrapper">
             {/* Search */}
             <div className="search-input-container">
@@ -278,7 +295,7 @@ export default function LearnStore() {
                 placeholder="Search apps..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="brutalist-search-input"
+                className="search-input"
               />
             </div>
             
@@ -287,7 +304,7 @@ export default function LearnStore() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="brutalist-select"
+                className="select"
               >
                 <option value="popular">Most Popular</option>
                 <option value="rating">Highest Rated</option>
@@ -303,7 +320,7 @@ export default function LearnStore() {
         <div className="category-navigation">
           <button
             onClick={() => setSelectedCategory('All')}
-            className={`brutalist-category-btn ${selectedCategory === 'All' ? 'active' : ''}`}
+            className={`category-btn ${selectedCategory === 'All' ? 'active' : ''}`}
           >
             All Apps
           </button>
@@ -311,7 +328,7 @@ export default function LearnStore() {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`brutalist-category-btn ${selectedCategory === category ? 'active' : ''}`}
+              className={`category-btn ${selectedCategory === category ? 'active' : ''}`}
             >
               {category}
             </button>
@@ -322,7 +339,7 @@ export default function LearnStore() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {sortedApps.map((app) => (
             <div key={app.id} className="group relative">
-              <div className="brutalist-app-card">
+              <div className="app-card">
                 {/* Featured Badge */}
                 {app.featured && (
                   <div className="featured-badge">
@@ -384,124 +401,20 @@ export default function LearnStore() {
         {sortedApps.length === 0 && (
           <div className="text-center py-12">
             <div className="text-6xl mb-4">🔍</div>
-            <h3 className="text-xl font-semibold text-white mb-2">No apps found</h3>
-            <p className="text-gray-400">Try adjusting your search or filters</p>
+            <h3 className="text-xl font-semibold text-slate-700 mb-2">No apps found</h3>
+            <p className="text-slate-500">Try adjusting your search or filters</p>
           </div>
         )}
       </div>
       
       <style jsx>{`
-        .brutalist-header {
-          background-color: #1a1a1a;
-          border-bottom: 3px solid #3b82f6;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-          position: sticky;
-          top: 0;
-          z-index: 50;
-        }
-
-        .header-content {
-          max-width: 1400px;
-          margin: 0 auto;
-          padding: 16px 0;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-
-        .brutalist-back-btn {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          padding: 12px 20px 12px 24px;
-          background-color: #2a2a2a;
-          border: 2px solid #4a5568;
-          border-radius: 0 8px 8px 0;
-          color: #ffffff;
-          font-size: 14px;
-          font-weight: bold;
-          cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-          position: relative;
-          overflow: hidden;
-          margin-left: 0;
-        }
-
-        .brutalist-back-btn::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.1),
-            transparent
-          );
-          transition: left 0.6s;
-        }
-
-        .brutalist-back-btn:hover::before {
-          left: 100%;
-        }
-
-        .brutalist-back-btn:hover {
-          background-color: #3a3a3a;
-          border-color: #60a5fa;
-          transform: translate(-2px, -2px);
-          box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
-        }
-
-        .brutalist-back-btn:active {
-          transform: translate(0, 0);
-          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .back-icon {
-          font-size: 18px;
-          font-weight: bold;
-          transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        .brutalist-back-btn:hover .back-icon {
-          transform: translateX(-2px);
-        }
-
-        .header-title {
-          font-size: 28px;
-          font-weight: bold;
-          color: #ffffff;
-          text-align: center;
-          flex: 1;
-          margin: 0 20px;
-          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-          letter-spacing: 1px;
-        }
-
-        .header-spacer {
-          width: 140px;
-        }
-
-        .brutalist-search-container {
-          background-color: #1a1a1a;
-          border: 3px solid #3b82f6;
+        .search-container {
+          background-color: #f8fafc;
+          border: 1px solid #e2e8f0;
           border-radius: 12px;
-          box-shadow: 4px 4px 1px #000000;
           padding: 20px;
           margin-bottom: 24px;
-          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        .brutalist-search-container:hover {
-          background-color: #2a2a2a;
-          border-color: #60a5fa;
-          transform: translate(-2px, -2px);
-          box-shadow: 6px 6px 1px #000000, 10px 10px 20px rgba(59, 130, 246, 0.2);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .search-filters-wrapper {
@@ -528,68 +441,64 @@ export default function LearnStore() {
           top: 50%;
           transform: translateY(-50%);
           font-size: 16px;
-          color: #a0a0a0;
+          color: #64748b;
           z-index: 2;
         }
 
-        .brutalist-search-input {
+        .search-input {
           width: 100%;
           padding: 12px 12px 12px 40px;
-          background-color: #2a2a2a;
-          border: 2px solid #4a5568;
+          background-color: #ffffff;
+          border: 1px solid #d1d5db;
           border-radius: 8px;
-          color: #ffffff;
+          color: #1f2937;
           font-size: 14px;
           font-weight: 500;
-          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+          transition: all 0.2s ease;
         }
 
-        .brutalist-search-input:focus {
+        .search-input:focus {
           outline: none;
-          border-color: #60a5fa;
-          background-color: #3a3a3a;
-          box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2), 2px 2px 4px rgba(0, 0, 0, 0.3);
+          border-color: #3b82f6;
+          box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
-        .brutalist-search-input::placeholder {
-          color: #a0a0a0;
+        .search-input::placeholder {
+          color: #9ca3af;
         }
 
         .sort-container {
           min-width: 200px;
         }
 
-        .brutalist-select {
+        .select {
           width: 100%;
           padding: 12px 16px;
-          background-color: #2a2a2a;
-          border: 2px solid #4a5568;
+          background-color: #ffffff;
+          border: 1px solid #d1d5db;
           border-radius: 8px;
-          color: #ffffff;
+          color: #1f2937;
           font-size: 14px;
           font-weight: 500;
           cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+          transition: all 0.2s ease;
           appearance: none;
-          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23a0a0a0' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
           background-position: right 12px center;
           background-repeat: no-repeat;
           background-size: 16px;
           padding-right: 40px;
         }
 
-        .brutalist-select:focus {
+        .select:focus {
           outline: none;
-          border-color: #60a5fa;
-          background-color: #3a3a3a;
-          box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2), 2px 2px 4px rgba(0, 0, 0, 0.3);
+          border-color: #3b82f6;
+          box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
-        .brutalist-select option {
-          background-color: #2a2a2a;
-          color: #ffffff;
+        .select option {
+          background-color: #ffffff;
+          color: #1f2937;
           padding: 8px;
         }
 
@@ -600,156 +509,82 @@ export default function LearnStore() {
           margin-bottom: 24px;
         }
 
-        .brutalist-category-btn {
+        .category-btn {
           padding: 12px 20px;
-          background-color: #1a1a1a;
-          border: 2px solid #4a5568;
+          background-color: #f8fafc;
+          border: 1px solid #d1d5db;
           border-radius: 8px;
-          color: #a0a0a0;
+          color: #64748b;
           font-size: 14px;
-          font-weight: bold;
+          font-weight: 500;
           cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
+          transition: all 0.2s ease;
         }
 
-        .brutalist-category-btn:hover {
-          background-color: #2a2a2a;
-          border-color: #60a5fa;
-          color: #ffffff;
-          transform: translate(-2px, -2px);
-          box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+        .category-btn:hover {
+          background-color: #e2e8f0;
+          border-color: #94a3b8;
+          color: #1f2937;
         }
 
-        .brutalist-category-btn.active {
+        .category-btn.active {
           background-color: #3b82f6;
-          border-color: #60a5fa;
+          border-color: #3b82f6;
           color: #ffffff;
-          transform: translate(-2px, -2px);
-          box-shadow: 4px 4px 8px rgba(59, 130, 246, 0.4);
         }
 
-        .brutalist-category-btn:active {
-          transform: translate(0, 0);
-          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .brutalist-app-card {
+        .app-card {
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           width: 100%;
           height: 280px;
-          color: #e5dede;
-          font-weight: bold;
+          color: #1f2937;
+          font-weight: 500;
           text-decoration: none;
           position: relative;
           cursor: pointer;
           overflow: hidden;
-          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-          background-color: #1a1a1a;
-          border: 3px solid #3b82f6;
+          transition: all 0.2s ease;
+          background-color: #ffffff;
+          border: 1px solid #e2e8f0;
           border-radius: 12px;
-          box-shadow: 4px 4px 1px #000000;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
           padding: 20px;
         }
 
-        .brutalist-app-card:hover {
-          background-color: #2a2a2a;
-          border-color: #60a5fa;
-          transform: translate(-6px, -6px) rotate(1deg);
-          box-shadow: 10px 10px 0 #000000, 15px 15px 20px rgba(59, 130, 246, 0.2);
-        }
-
-        .brutalist-app-card::before,
-        .brutalist-app-card::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.1),
-            transparent
-          );
-          transition: 0.6s;
-        }
-
-        .brutalist-app-card::before {
-          left: -100%;
-        }
-        .brutalist-app-card::after {
-          left: 100%;
-        }
-
-        .brutalist-app-card:hover::before {
-          animation: swipeRight 1.5s infinite;
-        }
-        .brutalist-app-card:hover::after {
-          animation: swipeLeft 1.5s infinite;
-        }
-
-        @keyframes swipeRight {
-          100% {
-            transform: translateX(200%) skew(-45deg);
-          }
-        }
-
-        @keyframes swipeLeft {
-          100% {
-            transform: translateX(-200%) skew(-45deg);
-          }
+        .app-card:hover {
+          border-color: #3b82f6;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .featured-badge {
           position: absolute;
           top: 8px;
           right: 8px;
-          background: linear-gradient(45deg, #ffd700, #ffed4e);
-          color: #000;
-          font-size: 10px;
-          font-weight: bold;
-          padding: 4px 8px;
-          border-radius: 12px;
-          z-index: 10;
-          animation: pulse 2s infinite;
-        }
-
-        .new-badge {
-          position: absolute;
-          top: 8px;
-          left: 8px;
-          background: linear-gradient(45deg, #10b981, #34d399);
+          background: linear-gradient(45deg, #fbbf24, #f59e0b);
           color: #ffffff;
           font-size: 10px;
           font-weight: bold;
           padding: 4px 8px;
           border-radius: 12px;
           z-index: 10;
-          animation: bounce 2s infinite;
+        }
+
+        .new-badge {
+          position: absolute;
+          top: 8px;
+          left: 8px;
+          background: linear-gradient(45deg, #10b981, #059669);
+          color: #ffffff;
+          font-size: 10px;
+          font-weight: bold;
+          padding: 4px 8px;
+          border-radius: 12px;
+          z-index: 10;
           box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
-        }
-
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.7; }
-        }
-
-        @keyframes bounce {
-          0%, 20%, 50%, 80%, 100% {
-            transform: translateY(0);
-          }
-          40% {
-            transform: translateY(-4px);
-          }
-          60% {
-            transform: translateY(-2px);
-          }
         }
 
         .app-icon-container {
@@ -757,35 +592,22 @@ export default function LearnStore() {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+          transition: all 0.2s ease;
           z-index: 3;
           margin-bottom: 12px;
         }
 
         .app-icon {
           font-size: 48px;
-          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+          transition: all 0.2s ease;
         }
 
-        .brutalist-app-card:hover .app-icon-container {
-          transform: translateY(-8px);
+        .app-card:hover .app-icon-container {
+          transform: translateY(-4px);
         }
 
-        .brutalist-app-card:hover .app-icon {
-          font-size: 56px;
-          animation: spin-and-zoom 4s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
-        }
-
-        @keyframes spin-and-zoom {
-          0% {
-            transform: rotate(0deg) scale(1);
-          }
-          50% {
-            transform: rotate(180deg) scale(1.1);
-          }
-          100% {
-            transform: rotate(360deg) scale(1);
-          }
+        .app-card:hover .app-icon {
+          font-size: 52px;
         }
 
         .app-info {
@@ -797,19 +619,18 @@ export default function LearnStore() {
         .app-title {
           font-size: 16px;
           font-weight: bold;
-          color: #ffffff;
+          color: #1f2937;
           margin: 0 0 4px 0;
-          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+          transition: all 0.2s ease;
         }
 
-        .brutalist-app-card:hover .app-title {
-          color: #60a5fa;
-          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        .app-card:hover .app-title {
+          color: #3b82f6;
         }
 
         .app-category {
           font-size: 12px;
-          color: #a0a0a0;
+          color: #64748b;
           margin: 0 0 8px 0;
           font-weight: normal;
         }
@@ -823,17 +644,16 @@ export default function LearnStore() {
         }
 
         .star {
-          color: #ffd700;
-          animation: pulse 2s infinite;
+          color: #fbbf24;
         }
 
         .rating {
-          color: #ffffff;
+          color: #1f2937;
           font-weight: bold;
         }
 
         .downloads {
-          color: #a0a0a0;
+          color: #64748b;
         }
 
         .app-description {
@@ -845,14 +665,14 @@ export default function LearnStore() {
 
         .app-description p {
           font-size: 11px;
-          color: #d0d0d0;
+          color: #6b7280;
           margin: 0;
           line-height: 1.4;
-          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+          transition: all 0.2s ease;
         }
 
-        .brutalist-app-card:hover .app-description p {
-          color: #ffffff;
+        .app-card:hover .app-description p {
+          color: #374151;
         }
 
         .app-footer {
@@ -879,33 +699,29 @@ export default function LearnStore() {
         .price {
           font-size: 18px;
           font-weight: bold;
-          color: #ffffff;
-          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+          color: #1f2937;
+          transition: all 0.2s ease;
         }
 
         .price-period {
           font-size: 12px;
-          color: #a0a0a0;
+          color: #64748b;
           font-weight: normal;
-          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+          transition: all 0.2s ease;
         }
 
-        .brutalist-app-card:hover .price {
-          color: #4ade80;
-        }
-
-        .brutalist-app-card:hover .price-period {
-          color: #d0d0d0;
+        .app-card:hover .price {
+          color: #059669;
         }
 
         .original-price {
           font-size: 12px;
-          color: #a0a0a0;
+          color: #9ca3af;
           text-decoration: line-through;
-          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+          transition: all 0.2s ease;
         }
 
-        .brutalist-app-card:hover .original-price {
+        .app-card:hover .original-price {
           color: #ef4444;
         }
 
@@ -918,23 +734,17 @@ export default function LearnStore() {
           font-size: 12px;
           font-weight: bold;
           cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+          transition: all 0.2s ease;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .buy-button:hover {
           background: linear-gradient(45deg, #1d4ed8, #1e40af);
           transform: scale(1.05);
-          box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .buy-button:active {
-          transform: scale(0.95);
-        }
-
-        .brutalist-app-card:active .app-icon,
-        .brutalist-app-card:active .app-title,
-        .brutalist-app-card:active .buy-button {
           transform: scale(0.95);
         }
       `}</style>

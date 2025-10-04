@@ -37,6 +37,7 @@ export default function Dashboard() {
             onSearch={() => console.log("Search")}
             onProfile={() => console.log("Profile")}
             onCart={() => console.log("Cart")}
+            userName="Namir"
           />
         </div>
       </header>
