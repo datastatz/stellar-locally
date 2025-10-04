@@ -5,6 +5,7 @@ import Book from '../data/Book';
 import AiTutor from '../data/AiTutor';
 import Paint from '../data/Paint';
 import Kahoot from '../data/Kahoot';
+import Lob from '../data/Lob';
 
 export default function MyApps() {
   const router = useRouter();
@@ -37,6 +38,7 @@ export default function MyApps() {
           <AiTutor />
           <Paint />
           <Kahoot />
+          <Lob />
         </div>
       </div>
       
