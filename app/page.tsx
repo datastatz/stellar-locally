@@ -15,8 +15,21 @@ export default function Dashboard() {
 
 
   return (
-    <div className="min-h-screen">
-      <header className="sticky top-0 z-50 w-full border-b border-white/20 bg-white/10 backdrop-blur-md shadow-lg">
+    <div className="min-h-screen w-full bg-white relative">
+      {/* Magenta Orb Grid Background */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          background: "white",
+          backgroundImage: `
+            linear-gradient(to right, rgba(71,85,105,0.15) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(71,85,105,0.15) 1px, transparent 1px),
+            radial-gradient(circle at 50% 60%, rgba(236,72,153,0.15) 0%, rgba(168,85,247,0.05) 40%, transparent 70%)
+          `,
+          backgroundSize: "40px 40px, 40px 40px, 100% 100%",
+        }}
+      />
+      <header className="sticky top-0 z-50 w-full border-b border-gray-300 bg-white backdrop-blur-md shadow-lg">
        
         <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-3">
           <Navbar
@@ -29,7 +42,7 @@ export default function Dashboard() {
       </header>
 
       {/* Main Content */}
-      <main className="relative min-h-screen flex flex-col items-center justify-center">
+      <main className="relative min-h-screen flex flex-col items-center justify-center z-10">
         {/* Cards with proper spacing */}
         <div className="grid grid-cols-2 gap-16 max-w-7xl w-full px-8 ml-55">
           {/* Left Card */}

@@ -39,7 +39,7 @@ export default function Navbar({
         type="button"
         onClick={onHome}
         aria-label="Home"
-        className="flex h-10 w-10 items-center justify-center rounded-full text-white outline-none transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-white/70"
+        className="flex h-10 w-10 items-center justify-center rounded-full text-slate-700 outline-none transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-slate-400"
       >
         <svg
           className="h-5 w-5"
@@ -58,7 +58,7 @@ export default function Navbar({
         type="button"
         onClick={onSearch}
         aria-label="Zoeken"
-        className="flex h-10 w-10 items-center justify-center rounded-full text-white outline-none transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-white/70"
+        className="flex h-10 w-10 items-center justify-center rounded-full text-slate-700 outline-none transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-slate-400"
       >
         <svg
           className="h-5 w-5"
@@ -81,7 +81,7 @@ export default function Navbar({
         type="button"
         onClick={onProfile}
         aria-label="Profiel"
-        className="flex h-10 w-10 items-center justify-center rounded-full text-white outline-none transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-white/70"
+        className="flex h-10 w-10 items-center justify-center rounded-full text-slate-700 outline-none transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-slate-400"
       >
         <svg
           className="h-5 w-5"
@@ -100,7 +100,7 @@ export default function Navbar({
         type="button"
         onClick={onCart}
         aria-label="Winkelwagen"
-        className="flex h-10 w-10 items-center justify-center rounded-full text-white outline-none transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-white/70"
+        className="flex h-10 w-10 items-center justify-center rounded-full text-slate-700 outline-none transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-slate-400"
       >
         <svg
           className="h-5 w-5"
