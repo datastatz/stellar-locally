@@ -49,7 +49,7 @@ export default function MyApps() {
           </div>
           <div className="app-item">
             <Book />
-            <div className="app-label">BOOK</div>
+            <div className="app-label">Openstax</div>
           </div>
           <div className="app-item">
             <AiTutor />
@@ -57,15 +57,15 @@ export default function MyApps() {
           </div>
           <div className="app-item">
             <Paint />
-            <div className="app-label">PAINT</div>
+            <div className="app-label">PAINTY</div>
           </div>
           <div className="app-item">
             <Kahoot />
-            <div className="app-label">KAHOOT</div>
+            <div className="app-label">Quizy</div>
           </div>
           <div className="app-item">
             <Lob />
-            <div className="app-label">LOB CHAT</div>
+            <div className="app-label">Guidance</div>
           </div>
         </div>
       </div>
