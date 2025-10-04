@@ -40,16 +40,34 @@ export default function LobPage() {
         </div>
       </div>
       
-      {/* Main content */}
-      <div className="pt-8 pb-4 relative z-10">
-        {/* EmoApp cards in a row with spacing */}
-        <div className="flex justify-center items-center gap-8 px-8">
-          <EmoApp />
-          <Book />
-          <AiTutor />
-          <Paint />
-          <Kahoot />
-          <Lob />
+       {/* Main content */}
+       <div className="pt-8 pb-4 relative z-10">
+        {/* App cards with labels */}
+        <div className="flex justify-center items-center gap-8 px-8 flex-wrap">
+          <div className="app-item">
+            <EmoApp />
+            <div className="app-label">Emo App</div>
+          </div>
+          <div className="app-item">
+            <Book />
+            <div className="app-label">Book</div>
+          </div>
+          <div className="app-item">
+            <AiTutor />
+            <div className="app-label">AI Tutor</div>
+          </div>
+          <div className="app-item">
+            <Paint />
+            <div className="app-label">Paint</div>
+          </div>
+          <div className="app-item">
+            <Kahoot />
+            <div className="app-label">Kahoot</div>
+          </div>
+          <div className="app-item">
+            <Lob />
+            <div className="app-label">Lob Chat</div>
+          </div>
         </div>
       </div>
       
