@@ -11,9 +11,10 @@ export default function MyApps() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative bg-white">
       {/* Grid Background */}
       <div className="fixed inset-0 z-0" style={{
+        background: "white",
         backgroundImage: `
           linear-gradient(to right, rgba(71,85,105,0.15) 1px, transparent 1px),
           linear-gradient(to bottom, rgba(71,85,105,0.15) 1px, transparent 1px),
